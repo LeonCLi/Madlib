@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ngMadLibs</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+      <div class"row content">
+        <div class="col-md-2-offset-2 border row-height-min text-center">
+          <img src="img/mad-lib-happy-face.png" class="smile">
+        </div>
+        <div class="col-md-6 text-center border2 row-height-min text-center">
+          <img src="img/ng-mad-libs-logo.png" class="logo">
+          <p class="superBig">Automate This!</p>
+        </div>
+      </div>
+        <h2>Provide the following words:</h2>
+        <br>
+        <form role="form">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control" id="MaleName" placeholder="Male Name" ng-model="male_name">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="jobTitle" placeholder="Job Title" ng-model="job_title">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="tediusTask" placeholder="Tedius Task" ng-model="tedius_task">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control" id="dirtyTask" placeholder="Dirty Task" ng-model="dirty_task">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="Celebrity" placeholder="Celebrity" ng-model="celebrity">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="uselessSkill" placeholder="Useless Skill" ng-model="useless_skill">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <input type="text" class="form-control" id="obnoxousCelebrity" placeholder="Obnoxious Celebrity" ng-model="obnoxious_celebrity">
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="hugeNumber" placeholder="Huge Number" ng-model="huge_number">
+              </div>
+              <div class="adjective">
+                <input type="text" class="form-control" id="Adjective" placeholder="Adjective" ng-model="adjective">
+              </div>
+            </div>
+          </div>
+        </form>
+    <hr>
+    <h4><p><span class="input">{{female_name}}</span> was a <span class="input">{{job_title}}</span> who loved technology. Although she loved parts of her job, she absolutely hated <span class="input">{{tedious task}}</span> and <span class="input"> {{dirty task}}</span>. So, <span class="input">{{female_name}}</span> met with her life mentor <span class="input">{{celebrity}}</span>
+
+      who told her to learn how to <span class="input">{{useless skill}}</span> with Thinkful. Thinkful didn't offer a course on <span class="input">{{useless skill}}</span> so she studied programming instead.</p>
+
+    <p>What a great decision! With her new skills, <span class="input">{{female name}}</span> built a(n) <span class="input">{{adjective}}</span> robot named <span class="input">{{obnoxiuous celebrity}}</span> that not only loved <span class="input">{{dirty task}}</span> but did it <span class="input">{{huge number}}</span> faster.
+    </p>
+    </h4>
+  </div>
+</div>
+</div>
+
+    <script src="js/angular.min.js" type="text/javascript"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
