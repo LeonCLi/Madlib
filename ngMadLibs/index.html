@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="">
+<html lang="en" ng-app="ngMadlibs" ng-controller="madlibsController">
   <head>
+    <title>ngMadlibs - version: {{version}}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ngMadLibs</title>
-
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -18,8 +17,10 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">
-      <div class"row content">
+    <br>
+
+      <!-- header -->
+      <div class"row">
         <div class="col-md-2-offset-2 border row-height-min text-center">
           <img src="img/mad-lib-happy-face.png" class="smile">
         </div>
@@ -28,57 +29,66 @@
           <p class="superBig">Automate This!</p>
         </div>
       </div>
-        <h2>Provide the following words:</h2>
-        <br>
-        <form role="form">
-          <div class="row">
-            <div class="col-md-4">
-              <div class="form-group">
-                <input type="text" class="form-control" id="MaleName" placeholder="Male Name" ng-model="male_name">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="jobTitle" placeholder="Job Title" ng-model="job_title">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="tediusTask" placeholder="Tedius Task" ng-model="tedius_task">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <input type="text" class="form-control" id="dirtyTask" placeholder="Dirty Task" ng-model="dirty_task">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="Celebrity" placeholder="Celebrity" ng-model="celebrity">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="uselessSkill" placeholder="Useless Skill" ng-model="useless_skill">
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="form-group">
-                <input type="text" class="form-control" id="obnoxousCelebrity" placeholder="Obnoxious Celebrity" ng-model="obnoxious_celebrity">
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" id="hugeNumber" placeholder="Huge Number" ng-model="huge_number">
-              </div>
-              <div class="adjective">
-                <input type="text" class="form-control" id="Adjective" placeholder="Adjective" ng-model="adjective">
-              </div>
-            </div>
+
+    <!-- INPUT -->
+    <div class="row content" ng-hide="hideFrom && madForm.$valid">
+      <div class="col-md-8 col-md-offset-2 border override">
+        <form name="madForm" ng-submit="submitted=true;submit()">
+          <div class="row text-center">
+              <h2>Male or female?</h2>
+              <input type="radio" ng-checked="{{gender.pronoun =='he'}}" ng-click="gender.pronoun='he';gender.poss='his'" name="gender" id="male" value="male" placeholder="">
+              <label for="gender">Male</label>
+              <input type="radio" ng-checked="{{gender.pronoun =='she'}}" ng-click="gender.pronoun='she';gender.poss='her'" name="gender" id="female" value="female" placeholder="">
+              <label for="gender">Female</label>
+          </div>
+          <div class="row text-center">
+            <h2>Provide the following words:</h2>
+          </div>
+
+          <div class="col-md-4 text-center">
+            <input type="text" class="form-control" id="MaleName" placeholder="Male Name" ng-model="male_name">
+            <input type="text" class="form-control" id="jobTitle" placeholder="Job Title" ng-model="job_title">
+            <input type="text" class="form-control" id="tediusTask" placeholder="Tedius Task" ng-model="tedius_task">
+          </div>
+
+          <div class="col-md-4 text-center">
+              <input type="text" class="form-control" id="dirtyTask" placeholder="Dirty Task" ng-model="dirty_task">
+              <input type="text" class="form-control" id="Celebrity" placeholder="Celebrity" ng-model="celebrity">
+              <input type="text" class="form-control" id="uselessSkill" placeholder="Useless Skill" ng-model="useless_skill">
+          </div>
+          <div class="col-md-4 text-center">
+              <input type="text" class="form-control" id="obnoxousCelebrity" placeholder="Obnoxious Celebrity" ng-model="obnoxious_celebrity">
+              <input type="text" class="form-control" id="hugeNumber" placeholder="Huge Number" ng-model="huge_number">
+              <input type="text" class="form-control" id="Adjective" placeholder="Adjective" ng-model="adjective">
+          </div>
+          <div class="row text-center">
+            <button type="submit" class="btn btn-lg btn-default submit-btn">Submit</button>
           </div>
         </form>
-    <hr>
-    <h4><p><span class="input">{{female_name}}</span> was a <span class="input">{{job_title}}</span> who loved technology. Although she loved parts of her job, she absolutely hated <span class="input">{{tedious task}}</span> and <span class="input"> {{dirty task}}</span>. So, <span class="input">{{female_name}}</span> met with her life mentor <span class="input">{{celebrity}}</span>
+      </div>
+    </div>
 
-      who told her to learn how to <span class="input">{{useless skill}}</span> with Thinkful. Thinkful didn't offer a course on <span class="input">{{useless skill}}</span> so she studied programming instead.</p>
+    <!-- RESULT-->
+    <div ng-show="hideForm && madForm.$valid" class="row content results">
+      <div class="col-md-8 col-md-offset-2 border override">
 
-    <p>What a great decision! With her new skills, <span class="input">{{female name}}</span> built a(n) <span class="input">{{adjective}}</span> robot named <span class="input">{{obnoxiuous celebrity}}</span> that not only loved <span class="input">{{dirty task}}</span> but did it <span class="input">{{huge number}}</span> faster.
-    </p>
-    </h4>
-  </div>
-</div>
-</div>
+        <p><span class="standout">{{data.name}}</span> was a <span class="standout">{{data.name}}</span> was a <span class="standout">{{data.job_title}}</span> who loved technology. Although {{gender.pronoun}} she loved parts of {{poss}} job, {{gender.pronoun}} absolutely hated <span class="standout">{{data.tedious_task}}</span> and <span class="standout"> {{data.dirty_task}}</span>. So, <span class="standout">{{data.my_name}}</span> met with {{poss}} life mentor <span class="standout">{{data.celebrity}}</span>
 
+    who told her to learn how to <span class="standout">{{data.useless_skill}}</span> with Thinkful. Thinkful didn't offer a course on <span class="standout">{{data.useless_skill}}</span> so she studied programming instead.</p>
+
+    <p>What a great decision! With her new skills, <span class="standout">{{data.male_name}}</span> built a(n) <span class="standout">{{data.adjective}}</span> robot named <span class="standout">{{data.obnoxiuous_celebrity}}</span> that not only loved <span class="standout">{{data.dirty_task}}</span> but did it <span class="standout">{{data.huge_number}}</span> faster.</p>
+        <div class="row text-center">
+          <button type="button" ng-click="reset()" class="btn btn-lg btn-default reset-btn">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!--FOOTER-->
+    <footer>
+      <span>ngMadLibs - version: {{version}}</span>
+    </footer>
+
+    <!-- SCRIPTS -->
     <script src="js/angular.min.js" type="text/javascript"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
